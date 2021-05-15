@@ -1,0 +1,8 @@
+<app-header></app-header>
+<main id="main" class="main-home">
+  <div class="baner-content">
+    <h1>{{productService.title}}</h1>
+  </div>
+  <app-list [products]="productService.products" (onProductSelect)="onProductSelect($event)"></app-list>
+</main>
+<app-footer></app-footer>

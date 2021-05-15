@@ -1,0 +1,24 @@
+<div class="modal-header">
+    <h4 class="modal-title" id="modal-basic-title">Course Preview</h4>
+    <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <div class="holds-the-iframe">
+        <iframe (load)="videoLoaded()" width="760" height="400" [src]="video_url | safe" title="YouTube video player"
+            frameborder="0" allowfullscreen>
+        </iframe>
+    </div>
+    <div class="preview-course-list">
+        <ng-container *ngFor="let content of contents;let i=index;">
+            <ng-container *ngFor="let lecture of content.lectures">
+                <div class="item link" *ngIf="lecture.isPreview" (click)="onClickLecture(lecture)">
+                    <span><i class="fa fa-play icon"></i></span>
+                    <span class="video-title">{{lecture.title}}</span>
+                    <span class="duration">{{lecture.duration}}:00</span>
+                </div>
+            </ng-container>
+        </ng-container>
+    </div>
+</div>

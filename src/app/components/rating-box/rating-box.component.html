@@ -1,0 +1,5 @@
+<div class="rating-box mt-20" *ngIf="rating">
+    <span class="rating-star full-star" *ngFor="let obj of loopArr('full')"></span>
+    <!-- <span class="rating-star half-star" *ngFor="let item of loopArr('half')"></span> -->
+    <span class="rating-star empty-star" *ngFor="let item of loopArr('empty')"></span>
+</div>

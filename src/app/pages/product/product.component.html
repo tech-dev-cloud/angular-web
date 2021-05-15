@@ -1,0 +1,27 @@
+<app-header></app-header>
+<main id="main" class="main-home">
+
+  <div class="container-fluid">
+    <div class="row">
+
+      <div class="col-md-12 pad-t-30">
+        <div class="col-md-8 baner-content">
+          <h1>A Best Online Platform for Political Science </h1>
+
+          <p class="pad-t-0">Boost your exam preparation with test series and notes for NET and Entrance Exams.</p>
+        </div>
+        <div class="category-products-inner" *ngFor="let category of productService.items">
+          <div class="title-divider">
+            <h5>{{category.title}}</h5>
+            <a routerLink="." class="see_all" (click)="seeAll(category.weburl)">See all</a>
+          </div>
+          <app-product-crousel [category]="category" [options]="slideConfigSmall" (clickItem)="onItemSelect($event)">
+          </app-product-crousel>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+</main>
+<app-footer></app-footer>

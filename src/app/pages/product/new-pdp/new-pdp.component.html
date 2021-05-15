@@ -1,0 +1,350 @@
+<app-header></app-header>
+<div class="top-container">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="section-content">
+                    <div class="row justify-content-center">
+                        <div class="col-xl-4 col-lg-5 col-md-6">
+                            <div class="preview_video">
+                                <a routerLink="." class="cover_img" (click)="onClickPreview()">
+                                    <img src="{{product?.image[0] || product?.cover_image}}" />
+                                    <div class="course-overlay">
+                                        <div class="badge_seller">
+                                            Bestseller
+                                        </div>
+                                        <span class="play_btn1">
+                                            <i class="uil uil-play"></i>
+                                        </span>
+                                        <span class="preview" *ngIf="product?.promo_video_url">Preview this
+                                            course</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-xl-8 col-lg-7 col-md-6">
+                            <div class="title">
+                                <h2>{{(product || {}).name}}</h2>
+                                <span class="heading">
+                                    {{(product || {}).heading}}
+                                </span>
+                            </div>
+                            <div class="rating" *ngIf="product">
+                                <div class="crse_reviews mr-2">
+                                    <i class="fa fa-star"></i> {{rating}}
+                                </div>
+                                ({{reviews?.length}} ratings)
+                            </div>
+                            <div class="rating" *ngIf="product?.totalEnrolled">
+                                {{product.totalEnrolled}} students enrolled
+                            </div>
+                            <div class="rating">
+                                Last updated {{product?.updatedAt | date}}
+                            </div>
+                            <ul class="rating">
+                                <!-- <li>
+                                    <button class="btn_buy">Add to Cart</button>
+                                </li> -->
+                                <li *ngIf="product?.isPaid">
+                                    <button class="btn_adcart" (click)="enroll()"
+                                        *ngIf="!product.purchaseStatus; else purchase">Buy Now At <b> <i
+                                                class="fa fa-inr"></i> {{product.price}}</b></button>
+                                    <ng-template #purchase>
+                                        <button class="btn_adcart" (click)="enroll()">Go to Course</button>
+                                    </ng-template>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- <div class="container-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="user_dt"> -->
+
+<!-- <div class="user-dt-left">
+                        <div class="live_user_dt">
+                            <div class="user_img5">
+                                <a href="#">
+                                    <img src="assets/img/top-left-logo.png" alt="" />
+                                </a>
+                            </div>
+                            <div class="user_cntnt">
+                                <a href="#">{{product?.mentorInfo?.name}}</a>
+                                <button class="subscribe-btn">Subscribe</button>
+                            </div>
+                        </div>
+                    </div> -->
+<!-- <div class="user-dt-right">
+                        <ul class="view-list">
+                            <li>
+                                <a href="#" class="tag">
+                                    <i class="fa fa-eye"></i>
+                                    <span>4291</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tag">
+                                    <i class="fa fa-thumbs-up"></i>
+                                    <span>400</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tag">
+                                    <i class="fa fa-thumbs-down"></i>
+                                    <span>400</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="tag">
+                                    <i class="fa fa-share-alt"></i>
+                                    <span>10</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div> -->
+<!-- </div> -->
+<!-- <div class="course_tabs">
+                    <nav>
+                        <div class="nav-tabs">
+                            <a [routerLink]='"."' [fragment]="'about'" class="nav-item nav-link">About</a>
+                            <a [routerLink]='"."' [fragment]="'content'" class="nav-item nav-link">Course Content</a>
+                        </div>
+                    </nav>
+                </div> -->
+<!-- </div>
+        </div>
+    </div>
+</div> -->
+<!-- Nav Bar -->
+<div class="container-2">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="course_tabs">
+                    <nav>
+                        <div class="nav-tabs">
+                            <a [routerLink]='"."' (click)="showFregment(1)"
+                                [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==1}"
+                                class="nav-item nav-link active">About</a>
+                            <a [routerLink]='"."' (click)="showFregment(0)"
+                                [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==0}"
+                                class="nav-item nav-link active" *ngIf="product?.type=='course'">Course Content</a>
+                            <a [routerLink]='"."' (click)="showFregment(3)"
+                                [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==3}"
+                                class="nav-item nav-link active" *ngIf="product?.type=='bulk'">Package
+                                Content</a>
+                            <a [routerLink]='"."' (click)="showFregment(4)"
+                                [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==4}"
+                                class="nav-item nav-link active" *ngIf="reviews?.length">Reviews</a>
+                            <!-- <a [routerLink]='"."' (click)="showFregment(2)"
+                                [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==2}"
+                                class="nav-item nav-link">Q/A</a> -->
+                        </div>
+                    </nav>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-2">
+    <div class="container">
+        <div class="row mb-3" [attr.id]="'about'">
+            <ng-container [ngSwitch]="fragmentType">
+                <!-- Course Content -->
+                <ng-container *ngSwitchCase="0">
+                    <div class="col-lg-12" *ngIf="product?.contents">
+                        <div class="crse_content">
+                            <h3>Course Content</h3>
+                            <div class="cnt-info">
+                                <ul>
+                                    <li> <span>{{totalLecture}} lectures</span></li>
+                                    <li> <span>{{totalCourseDuration | lecduration}}</span></li>
+                                </ul>
+                            </div>
+                            <div class="ui-accordion" *ngFor="let content of product.contents;let i=index;">
+                                <a [href]="'#submenu'+i" data-toggle="collapse" aria-expanded="false"
+                                    class="accordion-header" data-toggle="collapse">
+                                    <div class="section-header-left">
+                                        <span class="section-title-wrapper">
+                                            <i class="fa fa-angle-down"></i>
+                                            <span class="section-title-text">{{content.title}}</span>
+                                        </span>
+                                    </div>
+                                    <div class="section-header-right">
+                                        <span class="num-items-in-section">{{content.lectureCounts}} lectures</span>
+                                        <span class="section-header-length">{{content.duration | lecduration}}</span>
+                                    </div>
+                                </a>
+                                <div [id]="'submenu'+i" class="collapse sidebar-submenu">
+                                    <a routerLink="." class="ui-accordion-content"
+                                        *ngFor="let lecture of content.lectures" (click)="onClickLecture(lecture)">
+                                        <div class="lecture-container">
+                                            <div class="left-content">
+                                                <i
+                                                    [ngClass]="{'fa': true, 'fa-play-circle':lecture.file_type=='video', 'fa-file':lecture.file_type!='video'}"></i>
+                                                <div class="top">
+                                                    <div class="title">{{lecture.title}}</div>
+                                                </div>
+                                            </div>
+                                            <div class="details">
+                                                <a href="#" class="preview-text" *ngIf="lecture.isPreview">Preview</a>
+                                                <span class="content-summary"
+                                                    *ngIf="lecture.file_type=='video'">{{lecture.duration |
+                                                    lecduration}}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- about -->
+                <ng-container *ngSwitchCase="1">
+                    <div class="col-lg-12 mb-3 _htgdrt" *ngIf="product?.requirements && product.requirements.length">
+                        <h3>Requirements</h3>
+                        <div class="_scd123">
+                            <ul class="_htg452 _abcd145 row">
+                                <li class="col-lg-6" *ngFor="let requirement of product.requirements">
+                                    <div class="_5f7g15"><i class="fa fa-check-circle"></i><span>{{requirement}}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-3 description" *ngIf="product?.description">
+                        <h3>Description</h3>
+                        <div [innerHTML]="product.description"></div>
+                    </div>
+                    <div class="col-lg-12 mb-3 _htgdrt"
+                        *ngIf="product?.targetStudents && product.targetStudents.length">
+                        <h3>Target Students</h3>
+                        <div class="_scd123">
+                            <ul class="_htg452 _abcd145 row">
+                                <li class="col-lg-6" *ngFor="let str of product.targetStudents">
+                                    <div class="_5f7g15"><i class="fa fa-check-circle"></i><span>{{str}}</span></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-12 mb-3 _htgdrt" *ngIf="product?.benefits && product.benefits.length">
+                        <h3>Benefits</h3>
+                        <div class="_scd123">
+                            <ul class="_htg452 _abcd145 row">
+                                <li class="col-lg-6" *ngFor="let benefit of product.benefits">
+                                    <div class="_5f7g15"><i class="fa fa-check-circle"></i><span>{{benefit}}</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </ng-container>
+                <!-- Whats in package -->
+                <ng-container *ngSwitchCase="3">
+                    <div class="col-md-12 mt-4" *ngIf="product?.type=='bulk'">
+                        <h2 style="color: whitesmoke;">What's in package?</h2>
+                        <app-list [products]="product.sub_products" [nameOnly]="true"
+                            (onProductSelect)="onProductSelect($event)"></app-list>
+                    </div>
+                </ng-container>
+
+                <!-- Reviews Section -->
+                <ng-container *ngSwitchCase="4">
+                    <!-- <div class="col-lg-12">
+                        <div class="reviews_left">
+                            <h3>Student Feedback</h3>
+                            <div class="total_rating">
+                                <div class="_rate001">{{rating}}</div>
+                                <app-rating-box [rating]="product?.rating"></app-rating-box>
+                            </div>
+                            <div class="_rate003">
+                                <div class="_rate004">
+                                    <div class="progress progress1">
+                                        <div class="progress-bar" [ngStyle]="{'width': '70%'}" role="progressbar"
+                                            aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <app-rating-box [rating]="5"></app-rating-box>
+                                    </div>
+                                    <div class="_rate002">70%</div>
+                                </div>
+                                <div class="_rate004">
+                                    <div class="progress progress1">
+                                        <div class="progress-bar" [ngStyle]="{'width': '30%'}" role="progressbar"
+                                            aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <app-rating-box [rating]="4"></app-rating-box>
+                                    </div>
+                                    <div class="_rate002">40%</div>
+                                </div>
+                                <div class="_rate004">
+                                    <div class="progress progress1">
+                                        <div class="progress-bar" [ngStyle]="{'width': '10%'}" role="progressbar"
+                                            aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <app-rating-box [rating]="3"></app-rating-box>
+                                    </div>
+                                    <div class="_rate002">5%</div>
+                                </div>
+                                <div class="_rate004">
+                                    <div class="progress progress1">
+                                        <div class="progress-bar " [ngStyle]="{'width': '1%'}" role="progressbar"
+                                            aria-valuenow="2" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <app-rating-box [rating]="2"></app-rating-box>
+                                    </div>
+                                    <div class="_rate002">1%</div>
+                                </div>
+                                <div class="_rate004">
+                                    <div class="progress progress1">
+                                        <div class="progress-bar" [ngStyle]="{'width': '0'}" role="progressbar"
+                                            aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <div class="mt-1">
+                                        <app-rating-box [rating]="1"></app-rating-box>
+                                    </div>
+                                    <div class="_rate002">1%</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                    <div class="col-lg-12 mt-3">
+                        <div class="review_right">
+                            <div class="review_right_heading">
+                                <h3>Reviews</h3>
+                                <!-- <div class="review_search">
+                                    <input class="rv_srch" type="text" placeholder="Search reviews...">
+                                    <button class="rvsrch_btn"><i class="uil uil-search"></i></button>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="review_all120">
+                            <div class="review_all120">
+                                <app-comment *ngFor="let review of reviews" [comment]="review" [allowComment]="false">
+                                </app-comment>
+                                <!-- <div class="review_item">
+                                    <a href="#" class="more_reviews">See More Reviews</a>
+                                </div> -->
+                            </div>
+                        </div>
+                    </div>
+                </ng-container>
+
+                <ng-container *ngSwitchDefault>
+
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>

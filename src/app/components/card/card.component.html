@@ -1,0 +1,59 @@
+<a matRipple aria-label="Mylo Shop" routerLink="." (click)="onClickItem()" class="product_click card">
+    <div class="product-box">
+
+        <div class="product-image">
+            <img [lazyLoad]="product.image[0]"
+                [defaultImage]="'https://eduseeker-image-bucket.s3.amazonaws.com/s1/1611422731037quiz-placeholder.webp'"
+                alt="Mylo Shop">
+        </div>
+        <div class="product-info clearfix">
+            <p class="product-name">{{product.name}}</p>
+            <!-- <ng-container>
+                    <div class="rating-box">
+                        <div class="rating-box-inner">
+                            <i class="fa fa-star"></i>
+                            <span class="rating">4.5 </span>&nbsp;
+                            <span
+                                class="review">(33 Reviews)</span>
+    
+                        </div>
+                    </div>
+                     
+                </ng-container> -->
+            <div class="meta-info">{{(product.mentorInfo || {name:""}).name}}</div>
+            <div class="meta-info">
+                <ng-container *ngIf="product.type=='quiz'">
+                    <div *ngIf="product.product_meta.totalQuestions">Questions {{product.product_meta.totalQuestions}}
+                    </div>
+                    <div>Time {{product.product_meta.time_limit}} minutes</div>
+                </ng-container>
+
+            </div>
+            <ng-container *ngIf="!nameOnly">
+                <p class="price" *ngIf="!enrolled; else start_quiz">
+                    <span id="price">
+                        <ng-container *ngIf="product.isPaid; else free;"><i class="fa fa-rupee"
+                                id="i2"></i>{{product.price}}
+                        </ng-container>
+                        <ng-template #free>
+                            <span class="badge badge-success">Free</span>
+                        </ng-template>
+                    </span>
+                    <span id="original_price" *ngIf="product.strikeprice">
+                        <i class="fa fa-rupee"></i>
+                        {{product.strikeprice}}
+                    </span>
+                    <span id="offSpan" *ngIf="product.discountPercent">
+                        {{product.discountPercent}}% Off
+                    </span>
+                </p>
+                <ng-template #start_quiz>
+                    <p class="start-btn" *ngIf="product.type=='quiz'">
+                        Sart Quiz
+                    </p>
+                </ng-template>
+            </ng-container>
+
+        </div>
+    </div>
+</a>

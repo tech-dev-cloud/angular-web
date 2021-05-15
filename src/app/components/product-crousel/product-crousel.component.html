@@ -1,0 +1,6 @@
+<owl-carousel #owlElement class="top-banners" [options]="options" [carouselClasses]="['owl-theme', 'sliding']"
+    *ngIf="category.products?.length">
+    <div *ngFor="let product of category.products;let i = index;" style="padding: 5px;">
+        <app-card [product]="product" (clickItem)="onClickItem(product)"></app-card>
+    </div>
+</owl-carousel>

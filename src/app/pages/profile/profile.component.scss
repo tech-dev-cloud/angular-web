@@ -1,0 +1,149 @@
+.grey-bg 
+{
+  background-color:#494949;
+  padding: 1rem 1rem;
+}
+/*  user dashboard  */
+.main-home-page 
+{
+  padding-top: 70px;
+}
+.tabs 
+{
+  padding:3rem 1rem 1rem 1rem;
+  background-color: #3f0501;
+  opacity:0.8;
+  background-image:url("../../../assets/img/banner.png");
+  background-size: cover;
+  padding-bottom: 0;
+}
+.tabs h4
+{
+ color:#fff;
+ font-size:24px;
+}
+.tabs .ul-tab 
+{
+  padding-top:4rem;
+}
+.tabs .ul-tab ul 
+{
+  border: 0;
+}
+.tabs .ul-tab ul li 
+{
+  background-color: transparent;
+}
+.tabs .ul-tab ul li.active 
+{
+  border-bottom: 2px solid #fff;
+}
+.tabs .ul-tab ul li a
+ {
+      background-color: transparent!important;
+    border: 0!important;
+    color: #fff !important;
+    font-size: 16px;
+    padding: 10px 15px;
+ }
+ .transparent 
+ {
+  background-color: transparent;
+ }
+ .marg2 
+ {
+  margin: 2rem;
+ }
+ .no-bod 
+ {
+  border: 0!important;
+ }
+ .tabs .ul-tab ul li a:hover
+  {
+    background-color: transparent;
+    border: 0;
+    color: #fff;
+    
+  }
+  .search-section 
+  {
+    background-color: #fff;
+    border-radius: 10px;
+    padding:2rem;
+    margin-bottom: 3rem;
+  }
+  .search-section .select-div p select 
+  {
+    background-color: #fff;
+  }
+   .search-section .select-div p span.reset 
+   {
+    color: #cd2121;
+    font-size:14px;
+   }
+    .search-section .select-div .search-text-box
+    {
+      width: 100%;
+      display: inline-block;
+      border: 1px solid #eee;
+    }
+    .search-section .select-div  .search-text-box input
+    {
+      width: 75%;
+      display: inline-block;
+      float: left;
+      border: 0;
+      padding: 7px;
+    }
+    .search-section .select-div  .search-text-box button
+    {
+      width: 25%;
+      background-color: #cd2121;
+    padding: 5px;
+    border-radius: 7px;
+    border-color: transparent;
+    }
+  .search-section  .p-t-20 
+  {
+    padding-top: 2.5rem;
+  }
+  .search-section  .p-t-30 
+  {
+    padding-top: 3.5rem;
+  }
+  .search-section .select-div h5
+  {
+    color: #343434;
+    font-size: 14px;
+    padding-left: 3px;
+   
+    font-weight: bold;
+  }
+
+  .search-section .select-div p
+  {
+    border-right: 2px solid #eee;
+    margin-top: 2rem;
+  }
+  .search-section .select-div p select 
+  {
+    border: 0;
+  }
+.grey-bg 
+{
+  background-color:#494949;
+  padding: 1rem 1rem;
+}
+.category-title{
+  // width: 442px;
+    // height: 61px;
+    // opacity: .87;
+    font-size: 35px;
+    font-weight: 500;
+    // font-stretch: normal;
+    // font-style: normal;
+    line-height: 1.23;
+    // letter-spacing: normal;
+    // text-align: left;
+    color: #fff;
+}

@@ -1,0 +1,11 @@
+.modal-header{background: #ca3827; color: white;font-weight: bold; border: none;}
+.close{color: white!important;outline: none;}
+.close:hover{color: #444444;}
+.modal-body{background: #444444;}
+form{padding: 0 35px;}
+.group{position: relative;}
+input{width: 100%;}
+// input:focus{width: 100%; transition: all ease-in-out .5s;}
+.control{position: relative; border: none; padding: 6px 30px; box-shadow: 0 0 3px;border-radius: 24px; outline: none;}
+.sub-icon{position: absolute; left: 10px;top: 10px;color: #44444461;}
+button{padding: 5px 14px;border: none;border-radius: 5px;color: white; background: #ca3827;}

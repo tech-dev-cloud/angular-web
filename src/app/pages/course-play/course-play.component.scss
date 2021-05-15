@@ -1,0 +1,198 @@
+#body-row {
+    margin-left:0;
+    margin-right:0;
+}
+#sidebar-container {
+    min-height: 100vh;   
+    background-color: #333;
+    padding: 0;
+}
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 350px;
+    position: fixed;
+    overflow-y: scroll;
+    z-index: 11;
+    margin-top: 70px;
+}
+.sidebar-collapsed {
+    width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    // height: 50px;
+    color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    // height: 45px;
+    padding-left: 20px;
+}
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+.logo-separator {
+    background-color: #333;    
+    height: 60px;
+}
+// .bg-dark{}
+.list-group{
+    position: absolute;
+    width: 100%;
+}
+.main{
+    margin-left: 350px;
+    margin-top: 70px;
+    background: #333;
+}
+/* Closed submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+  content: " \f0d7";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+/* Opened submenu icon */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+  content: " \f0da";
+  font-family: FontAwesome;
+  display: inline;
+  text-align: right;
+  padding-left: 10px;
+}
+.list-group-item{
+    background: #333!important;
+    border-bottom: 1px solid #242424;
+    // border:none;
+    // border-radius: none;
+}
+.lecture-container {
+    background-color: #171717!important;
+    border-bottom: 1px solid #242424!important;
+    color: #c7c7c7!important;
+}
+.active-lec{
+    background: #9b1516!important;
+}
+.mr-space-xxs{margin-right: 4px;}
+.ml-space-xxs{margin-left: 4px;}
+.sub-text{color: #b6b6b6f0;font-weight: bold;}
+.course_tabs{
+    float: left;
+    width: 100%;
+    margin-top: 10px;
+}
+nav{
+    background-color: #171717;
+    // /* border-bottom: 1px solid #242424; */
+    color: #c7c7c7;
+}
+.course_tabs .nav-item {margin-bottom: 0 !important;}
+.nav-tabs {display: flex; border-bottom: 1px solid #333;}
+.nav-tabs .nav-link{padding: .5rem 1.5rem; color:#c7c7c7 !important; text-decoration: none;}
+.nav-tabs .nav-link.active {
+    color: #fff !important;
+    background-color: transparent !important;
+    border-color: inherit !important;
+    border-top: 0 !important;
+    border-bottom: 2px solid #ed2a26 !important;
+    border-left: 0 !important;
+    border-right: 0 !important;
+}
+.course-content{
+    background-color: #171717;
+    border-bottom: 1px solid #242424;
+    color: #c7c7c7;
+}
+.active-content{
+    background: #333;
+    color: #fff;
+    border-bottom: 1px solid #242424;
+}
+.card{ border-radius: 0;background-color: #333; }
+.about-course{color:#fff}
+iframe{height: 550px;}
+h3{
+    color: white;
+    font-size: 1rem;
+}
+.ask-question{
+    // border: none;
+    // background: transparent;
+    // font-weight: bold;
+    // font-family: sans-serif;
+    // color: #ffffff52;
+    // font-size: 14px;
+        height: 40px;
+        // border: 0;
+        padding: 0 20px;
+        border-radius: 20px;
+        color: #fff;
+        font-size: 14px;
+        font-weight: 500;
+        font-family: 'Roboto', sans-serif;
+        background: #ed2a26;
+        border: 1px solid #ed2a26;
+        margin-right: 6px;
+}
+.btn-default{color: whitesmoke!important;}
+@media (min-width: 992px){
+.collapse_menu {
+    width: 60px;
+    text-align: center;
+    display: block;
+    height: 60px;
+    padding: 0;
+    border: 0;
+    background: #ed2a26;
+    color: #fff;
+    font-size: 30px;
+    margin: 0;
+    cursor: pointer;
+    float: left;
+}
+.collapse_menu .collapse_menu--icon {
+    display: block;
+    float: left;
+    width: 60px;
+    height: 60px;
+    line-height: 60px;
+    font-size: 22px;
+}
+.collapse_menu .collapse_menu--label {
+    display: block;
+    // height: 40px;
+    // line-height: 40px;
+}
+}
+.back-btn{
+    padding: 10px 0 0px 15px;
+    color: #ed2a26;
+    font-weight: bold;
+}
+@media(min-width: 320px) and (max-width:1024px){
+    .main{margin-left: 0;}
+    .sidebar-expanded{display: none!important;}
+}
+@media(min-width: 320px)  and (max-width:700px){
+    iframe{ height: 210px;}
+}
+@media(min-width: 701px)  and (max-width:1024px){
+    iframe{ height: 500px;}
+}
+// height: 555px
+// height: 210px;

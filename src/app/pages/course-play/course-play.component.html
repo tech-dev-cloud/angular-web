@@ -1,0 +1,160 @@
+<app-header [ratingItem]="!product?.userReview" (ratingEvent)="giveRating()"></app-header>
+<div class="row" id="body-row">
+    <!-- Sidebar -->
+    <!-- Course Content for Desktop view -->
+    <div id="sidebar-container" class="sidebar-expanded d-none d-md-block">
+
+        <ul class="list-group">
+            <!-- Separator with title -->
+            <!-- <li class="list-group-item sidebar-separator-title text-muted d-flex align-items-center menu-collapsed">
+                <small>MAIN MENU</small>
+            </li> -->
+            <!-- /END Separator -->
+            <!-- Menu with submenu -->
+            <ng-container *ngFor="let content of product?.contents;let i=index">
+                <a [href]="'#submenu'+i" data-toggle="collapse" aria-expanded="false"
+                    class="list-group-item text-white">
+                    <div class="d-flex w-100 justify-content-start align-items-center">
+                        <!-- <span class="fa fa-dashboard fa-fw mr-3"></span> -->
+                        <span class="menu-collapsed">{{content.title}}</span>
+                        <span class="submenu-icon ml-auto"></span>
+                    </div>
+                    <div class="font-text-xs">
+                        <span class="mr-space-xxs">0 / {{content.lectureCounts}}</span>|<span
+                            data-purpose="section-duration" class="ml-space-xxs">{{content.duration |
+                            lecduration}}</span>
+                    </div>
+                </a>
+                <!-- Submenu content -->
+                <div [id]="'submenu'+i" [ngClass]="{'collapse sidebar-submenu': true, 'show':i==0}">
+                    <ng-container *ngFor=" let lecture of content.lectures">
+                        <a routerLink="." (click)="playLecture(lecture)"
+                            [ngClass]="{'list-group-item  list-group-item-action text-white': true, 'lecture-container':lecture._id!=currentLecture._id, 'active-lec':lecture._id==currentLecture._id}">
+                            <div>
+                                <span class="menu-collapsed">{{lecture.title}}</span>
+                            </div>
+                            <div class="sub-text">
+                                <span class="font-text-xs" *ngIf="lecture.file_type=='video'"> <i
+                                        class="fa fa-play-circle"></i>
+                                    {{lecture.duration |
+                                    lecduration}}</span>
+                                <span class="font-text-xs" *ngIf="lecture.file_type=='pdf'"> <i class="fa fa-file"></i>
+                                    Document</span>
+                            </div>
+                        </a>
+                    </ng-container>
+                </div>
+            </ng-container>
+        </ul>
+    </div>
+
+    <!-- MAIN -->
+    <div class="col main">
+
+        <iframe width="100%" height="600" [src]="'https://player.vimeo.com'+currentLecture?.url | safe"
+            title="YouTube video player" frameborder="0" allowfullscreen>
+        </iframe>
+
+        <!-- Nav Bar -->
+        <div class="course_tabs">
+            <nav>
+                <div class="nav-tabs">
+                    <a [routerLink]='"."' (click)="showFregment(0)"
+                        [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==0}"
+                        class="nav-item nav-link active" *ngIf="appService.isMobileResolution">Course Content</a>
+                    <a [routerLink]='"."' (click)="showFregment(1)"
+                        [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==1}"
+                        class="nav-item nav-link active">About</a>
+                    <a [routerLink]='"."' (click)="showFregment(2)"
+                        [ngClass]="{'nav-item nav-link': true, 'active':fragmentType==2}"
+                        class="nav-item nav-link">Q/A</a>
+                </div>
+            </nav>
+        </div>
+        <div class="card">
+            <!-- Course Content for Mobile view -->
+            <ng-container *ngIf="fragmentType==0">
+                <ng-container *ngFor="let content of product?.contents;let i=index">
+                    <a [href]="'#submenu'+i" data-toggle="collapse" aria-expanded="false"
+                        class="list-group-item text-white">
+                        <div class="d-flex w-100 justify-content-start align-items-center">
+                            <span class="menu-collapsed">{{content.title}}</span>
+                            <span class="submenu-icon ml-auto"></span>
+                        </div>
+                        <div class="font-text-xs">
+                            <span class="mr-space-xxs">0 / {{content.lectureCounts}}</span>|<span
+                                data-purpose="section-duration" class="ml-space-xxs">{{content.duration |
+                                lecduration}}</span>
+                        </div>
+                    </a>
+                    <!-- Submenu content -->
+                    <div [id]="'submenu'+i" [ngClass]="{'collapse sidebar-submenu': true, 'show':i==0}">
+                        <ng-container *ngFor="let lecture of content.lectures">
+                            <a routerLink="." (click)="playLecture(lecture)"
+                                [ngClass]="{'list-group-item  list-group-item-action text-white': true, 'lecture-container':lecture._id!=currentLecture._id, 'active-lec':lecture._id==currentLecture._id}">
+                                <div>
+                                    <span class="menu-collapsed">{{lecture.title}}</span>
+                                </div>
+                                <div class="sub-text">
+                                    <span class="font-text-xs" *ngIf="lecture.file_type=='video'"> <i
+                                            class="fa fa-play-circle"></i>
+                                        {{lecture.duration |
+                                        lecduration}}</span>
+                                    <span class="font-text-xs" *ngIf="lecture.file_type=='pdf'"> <i
+                                            class="fa fa-file"></i>
+                                        Document</span>
+                                </div>
+                            </a>
+                        </ng-container>
+                    </div>
+                </ng-container>
+            </ng-container>
+
+            <div class="about-course p-2" [innerHTML]="product?.description" *ngIf="fragmentType==1"></div>
+            <div class="comments p-2" *ngIf="fragmentType==2 && allComments?.length">
+                <h3 class="ui dividing header" *ngIf="!mainComment">All Questions</h3>
+
+                <!-- Parent Comment -->
+                <ng-container *ngIf="mainComment">
+                    <div class="back-btn">
+                        <span (click)="backToAllComments()" style="cursor: pointer;">
+                            <i class="fa fa-arrow-left"></i> Back to all comments
+                        </span>
+                    </div>
+                    <app-comment [comment]="mainComment" [mainComment]="true" (click)="mainComment"></app-comment>
+                </ng-container>
+
+                <!-- All Comments Loop -->
+                <ng-container *ngFor="let comment of commentArr; let i=index;">
+                    <app-comment [comment]="comment" [reply]="!!mainComment" [allowComment]="!mainComment"
+                        (replyQuery)="onReply($event)" (showComments)="showComments($event)"></app-comment>
+                </ng-container>
+
+                <!-- Button -->
+                <button class="ask-question mt-2" (click)="onAskQuestion('click')" *ngIf="!askQuestion;else reply;">
+                    Ask Question</button>
+                <div class="review_item">
+                    <a href="#" class="more_reviews">See More Reviews</a>
+                </div>
+                <!-- reply Template -->
+                <ng-template #reply>
+                    <form class="ui reply form">
+                        <div class="form-group">
+                            <textarea class="form-control col-lg-6" autofocus name="message"
+                                [(ngModel)]="message"></textarea>
+                        </div>
+                        <div class="form-group">
+                            <button class="btn btn-success" (click)="onAskQuestion('post')">Post</button>
+                            <button class="btn btn-default ml-2" (click)="onAskQuestion('cancel')">Cancel</button>
+                        </div>
+                    </form>
+                </ng-template>
+
+            </div>
+        </div>
+        <div>
+            <!-- About Course -->
+        </div>
+    </div><!-- Main Col END -->
+
+</div><!-- body-row END -->

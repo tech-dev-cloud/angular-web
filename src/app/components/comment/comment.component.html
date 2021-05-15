@@ -1,0 +1,55 @@
+<div [ngClass]="{'review_item': true,'ml-4':reply}">
+    <div class="review_usr_dt">
+        <img src="images/left-imgs/img-2.jpg" alt="">
+        <!-- <div id="profileImage">{{comment.user.name | imagename}}</div> -->
+        <div class="rv1458">
+            <h4 class="tutor_name1">{{comment.user.name}}</h4>
+            <span class="time_145">{{comment.createdAt | date}}</span>
+        </div>
+    </div>
+    <div>
+        <app-rating-box *ngIf="comment?.rating" [rating]=comment?.rating></app-rating-box>
+        <p [ngClass]="{'rvds10': true, 'font-weight-bold':mainComment}">{{comment.message}}</p>
+        <ng-container *ngIf="mainComment">
+            <div style="color: #fff;">{{comment.commentCounts}} comments</div>
+        </ng-container>
+
+        <ng-container *ngIf="allowComment">
+            <div class="actions">
+                <a class="reply" (click)="onReply('click')" *ngIf="!isReply;else reply_temp;">Reply</a>
+            </div>
+            <div class="actions mt-1" *ngIf="comment.commentCounts">
+                <a class="reply" (click)="viewReply()">
+                    <span>View <span *ngIf="comment.commentCounts>1">all </span>
+                        {{comment.commentCounts}} comment<span *ngIf="comment.commentCounts>1">s</span></span>
+                </a>
+            </div>
+        </ng-container>
+    </div>
+
+    <!-- <div class="rpt100">
+        <span>Was this review helpful?</span>
+        <div class="radio--group-inline-container">
+            <div class="radio-item">
+                <input id="radio-3" name="radio1" type="radio">
+                <label for="radio-3" class="radio-label">Yes</label>
+            </div>
+            <div class="radio-item">
+                <input id="radio-4" name="radio1" type="radio">
+                <label for="radio-4" class="radio-label">No</label>
+            </div>
+        </div>
+        <a href="#" class="report145">Report</a>
+    </div> -->
+</div>
+<!-- </div>-->
+
+<ng-template #reply_temp>
+    <div class="form-group">
+        <input type="text" class="form-control mt-1" name="message" [(ngModel)]="message">
+        <div class="mt-1">
+            <button class="btn btn-primary mr-2" (click)="onReply('post')">Reply</button>
+            <button class="btn btn-default" style="background-color: gray;" (click)="onReply('cancel')">Cancel</button>
+        </div>
+    </div>
+</ng-template>

@@ -1,0 +1,11 @@
+<ng-container *ngIf="products; else empty">
+  <section class="listing-cont">
+    <section class="product-box-cont" *ngFor="let product of products;let i = index ">
+      <app-card [product]="product" [nameOnly]="nameOnly" [enrolled]="enrolled" (clickItem)="onClickItem($event)">
+      </app-card>
+    </section>
+  </section>
+</ng-container>
+<ng-template #empty>
+  <h1 *ngIf="enrolled">Not enrolled to any quiz</h1>
+</ng-template>

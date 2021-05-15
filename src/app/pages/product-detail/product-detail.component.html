@@ -1,0 +1,105 @@
+<!-- ======= Hero Section ======= -->
+<app-header></app-header>
+<main id="main" class="main-course-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-rating">
+
+
+        <div class="col-md-8">
+          <div class="row">
+            <div class="left-img col-md-12">
+              <div class="col-md-4 minus-img"> <img src="{{product?.imageURL}}"></div>
+              <div class="col-md-8 content-right">
+                <h2>{{(product || {}).title}}</h2>
+                <h4>{{(product || {}).headline}}</h4>
+                <!-- <p>Attempt 30 questions in 8 minutes - Chance to win Prizes Worth Rs 10,000! Register yourself Now by clicking on the Enroll Now Button</p> -->
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-1"><span><img src="assets/img/quiz-detail-inner/seprator.png"></span></div>
+        <div class="col-md-3 right-star">
+          <!-- <span class="rating-star">
+            <span>
+              <img src="assets/img/quiz-list/star-red.png" />
+            </span>
+            <span>
+              <img src="assets/img/quiz-list/star-red.png" />
+            </span>
+            <span>
+              <img src="assets/img/quiz-list/star-red.png" />
+            </span>
+            <span>
+              <img src="assets/img/quiz-list/star-red.png" />
+            </span>
+            <span>
+              <img src="assets/img/quiz-detail-inner/half-star.png" />
+            </span>
+            <span class="white-rating">4.5</span>
+          </span> -->
+          <span>
+            <button class="enroll-btn" (click)="enroll()">
+              <i><img src="assets/img/quiz-list/enroll-icon.png" /></i>
+
+              <ng-container *ngIf="product?.isPaid; else free">
+                Enroll Now at <b> <i class="fa fa-inr"></i> {{product.amount}}</b>
+              </ng-container>
+              <ng-template #free>
+                Enroll Now For Free
+              </ng-template>
+
+              <!-- Enroll Now at <i class="fa fa-inr"></i>{{product.amount}} -->
+            </button>
+          </span>
+
+        </div>
+
+      </div>
+      <!-- 
+      <div class="col-md-12">
+        <div class="course-include">
+          <span>This course includes</span>
+          <ul>
+            <li><span>9 hours on-demand video</span></li>
+            <li><span>2 articles</span></li>
+            <li><span>76 downloadable resources</span></li>
+            <li><span>Full lifetime access</span></li>
+          </ul>
+        </div>
+      </div>
+ -->
+
+    </div>
+
+
+
+    <div class="row">
+
+      <div class="col-md-12 list-detail">
+
+        <div class="col-md-6 bg-white left-section">
+          <h2>User Benefits of Quiz</h2>
+          <!-- <span style="justify-content: center;">What will you get</span> -->
+        </div>
+
+        <!-- <div class="col-md-6 bg-red benifits"> -->
+          <div class="col-md-6 bg-red">
+
+          <ul>
+            <li *ngFor="let item of product?.benefits"><img src="assets/img/quiz-detail-inner/tick.png"><span>{{item}}</span></li>
+          </ul>
+        </div>
+        
+      </div>
+    </div>
+    <!-- <div [innerHTML]="product
+      
+      
+      .description" style="background:white;"></div> -->
+  </div>
+
+</main>
+<app-footer></app-footer>
+

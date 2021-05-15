@@ -1,0 +1,48 @@
+.main-course-detail{background-color: #3f3f3f;padding-top: 140px;padding-bottom: 60px;}
+
+.section-rating{display: flex; background-color: #494949;border-radius: 15px;padding: 25px 0px;max-width: 92%; margin-left: 5%; padding-bottom: 10px;}
+.section-rating .col-md-6{padding: 0;}
+.section-rating .left-img{display: flex;padding: 0;}
+.section-rating .left-img .minus-img{ margin-left: -65px;}
+.section-rating .left-img img{box-shadow:9px 0px 13px #393843;border-radius: 10px;width: 100%;}
+.section-rating .left-img .content-right{padding: 5px 25px;padding-right: 0px; color: #fff; padding-top: 15px;}
+.section-rating .left-img .content-right h4{font-size: 1.0rem;  font-weight: bold;}
+.section-rating .left-img .content-right p{font-size: 14px;}
+.section-rating .right-star{ padding: 15px 0px;}
+.section-rating .rating-star{ margin-bottom: 23px; display: flex;} 
+.section-rating .white-rating{ color: #fff;padding-left: 10px;font-size: 13px; padding-top: 4px;} 
+
+
+.enroll-btn{background-color: #c92223; border: 0;color: #fff;border-radius: 5px;width: 80%;padding: 7px; margin-top: 0px;}
+.enroll-btn img{width: 14px;margin-right: 6px;margin-top: -2px;}
+
+.list-detail{display: flex; margin-top: 50px; border-radius: 10px;}
+.list-detail .bg-red{ background-image: url(../../../assets//img/quiz-detail-inner/banner-bg-red.png);background-repeat: no-repeat; background-size:cover;border-top-right-radius: 10px;border-bottom-right-radius: 10px;}
+.list-detail .left-section{border-radius: 10px; border-bottom-right-radius: 0px; border-top-right-radius: 0;padding: 35px 50px; text-align: center;}
+.list-detail .left-section h2{  font-size: 40px; font-weight: bold; color: #c92223;}
+.list-detail .left-section span{text-align: left !important;display: flex;padding-top: 15px;font-size: 28px; padding-left: 10px;color: #0e0e0e;}
+.list-detail .bg-red  ul{list-style: none;padding: 30px; margin: 0px; padding-top: 40px;}
+.list-detail .bg-red  ul li{padding: 10px 0px; color: #fff; font-size: 15px;}
+.list-detail .bg-red  ul li img{ padding-right: 15px;}
+
+.course-include{color: white;}
+.course-include ul{list-style: none;}
+.benifits ul li{font-weight: bold; color:white}
+
+@media (min-width: 320px)  and (max-width:767px){
+  .list-detail .left-section span{font-size:13px;}
+  .list-detail{ display: flex;flex-direction: column;}
+  .list-detail .left-section{ border-bottom-left-radius: 0;border-top-right-radius: 10px;}
+  .list-detail .bg-red{border-top-right-radius: 0; border-bottom-left-radius: 10px;}
+  .list-detail .left-section h2{font-size: 36px;}
+  .section-rating{flex-direction: column; width: 100%; max-width: 100%;margin-left: 0; margin: 20px;}
+  .section-rating .left-img{ display: flex;flex-direction: column;}
+  .section-rating .left-img .minus-img{ margin-left: 0px!important;}
+  .section-rating .right-star{ text-align: center;}
+  .section-rating .rating-star{ display: flex;justify-content: center;}
+  .section-rating .col-md-1{ display: none;}
+}
+@media (min-width: 767px)  and (max-width:1300px){
+  .list-detail .left-section h2{font-size:30px;}
+  .list-detail .left-section span{font-size:26px;}
+}

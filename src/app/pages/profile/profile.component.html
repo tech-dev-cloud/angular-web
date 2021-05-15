@@ -1,0 +1,33 @@
+<app-header></app-header>
+<main id="main" class="main-home-page">
+  <div class="tabs">
+    <div class="container">
+      <div class="row">
+        <h4>My Collection</h4>
+
+        <!-- <div class="ul-tab"> -->
+        <!-- <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" href="#allcourse">All</a></li>
+            <li><a data-toggle="tab" href="#allquiz">Quiz</a></li>
+            <li><a data-toggle="tab" href="#allquiz1">PDF</a></li>
+          </ul> -->
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
+  <div class="grey-bg">
+    <div class="container" *ngIf="productService.enrolledProducts?.length">
+      <ng-container *ngFor="let category of productService.enrolledProducts">
+        <div>
+          <div class="baner-content">
+            <h1>{{category.title}}</h1>
+          </div>
+          <app-list [products]="category.products" [enrolled]="true" (onProductSelect)="onProductSelect($event)">
+          </app-list>
+        </div>
+      </ng-container>
+
+    </div>
+  </div>
+</main>
+<app-footer></app-footer>

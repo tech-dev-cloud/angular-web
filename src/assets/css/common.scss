@@ -1,0 +1,79 @@
+$base-colo-gray:#7e7d7d;
+$color_white: #ffffff;
+$color_black: #242424;
+.total_rating{
+    display: flex;
+    width: 100%;
+    font-size: 16px;
+    justify-items: center;
+    background: $color_black;
+    border: 1px solid $color_black;
+    padding: 10px 20px;
+    border-radius: 20px;
+}
+._rate001 {
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    margin-bottom: 0;
+    color: $color_white;
+    margin-right: 10px;
+    line-height: 32px;
+}
+// .rating-box {
+//     color: #dedfe0;
+//     display: flex;
+//     flex-basis: 30%;
+// }
+// .rating-star {
+//     font-size: 1.3rem;
+//     width: 1.3rem;
+//     height: 1.3rem;
+//     position: relative;
+//     display: block;
+//     float: left;
+//     margin-right: 7px;
+// }
+
+// .full-star:before {
+//     line-height: 22px;
+//     color: #f2b01e;
+//     content: "\2605";
+//     position: absolute;
+//     font-family: "Font Awesome 5 Free";
+//     font-weight: 900;
+//     left: 0;
+//     line-height: 33px;
+// }
+// .half-star:before {
+//     line-height: 32px;
+//     color: #f2b01e;
+//     content: "\2605";
+//     font-family: "Font Awesome 5 Free";
+//     font-weight: 900;
+//     width: 44%;
+//     position: absolute;
+//     left: 0;
+//     overflow: hidden;
+
+// }
+// .half-star:after {
+//     content: '\2605';
+//     font-family: "Font Awesome 5 Free";
+//     font-weight: 900;
+//     left: 1.5rem;
+//     width: 60%;
+//     text-indent: -1.5rem;
+
+// }
+._rate002 {
+    font-size: 13px;
+    font-weight: 500;
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    margin-bottom: 0;
+    color: #fff;
+    margin-left: 10px;
+    line-height: 22px;
+}

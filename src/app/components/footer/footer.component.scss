@@ -1,0 +1,212 @@
+
+/*--------------------------------------------------------------
+# Footer
+--------------------------------------------------------------*/
+// #footer {
+//   position: absolute;
+//   width: 100%;
+//   bottom: 0;
+//   color: #fff;
+//   font-size: 14px;
+//   position: relative;
+//   background-color: #c92223;
+// }
+
+// #footer::before {
+//   content: "";
+//   position: absolute;
+//   left: 0;
+//   right: 0;
+//   top: 0;
+//   bottom: 0;
+ 
+//   z-index: 1;
+// }
+
+// #footer .footer-top {
+//   position: relative;
+//   z-index: 2;
+//   text-align: center;
+//   padding: 80px 0;
+// }
+
+// #footer .footer-top h3 {
+//   font-size: 36px;
+//   font-weight: 700;
+//   color: #fff;
+//   position: relative;
+//   font-family: "Poppins", sans-serif;
+//   padding-bottom: 0;
+//   margin-bottom: 0;
+// }
+
+// #footer .footer-top p {
+//   font-size: 15;
+//   font-style: italic;
+//   margin: 30px 0 0 0;
+//   padding: 0;
+// }
+
+// #footer .footer-top .footer-newsletter {
+//   text-align: center;
+//   font-size: 15px;
+//   margin-top: 30px;
+// }
+
+// #footer .footer-top .footer-newsletter form {
+//   background: #fff;
+//   padding: 6px 10px;
+//   position: relative;
+//   border-radius: 50px;
+//   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+//   text-align: left;
+// }
+
+// #footer .footer-top .footer-newsletter form input[type="email"] {
+//   border: 0;
+//   padding: 4px 8px;
+//   width: calc(100% - 100px);
+// }
+
+// #footer .footer-top .footer-newsletter form input[type="submit"] {
+//   position: absolute;
+//   top: 0;
+//   right: -1px;
+//   bottom: 0;
+//   border: 0;
+//   background: none;
+//   font-size: 16px;
+//   padding: 0 20px;
+//   background: #fdc134;
+//   color: #fff;
+//   transition: 0.3s;
+//   border-radius: 50px;
+//   box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
+// }
+
+// #footer .footer-top .footer-newsletter form input[type="submit"]:hover {
+//   background: #fcb102;
+// }
+
+// #footer .footer-top .social-links {
+//   margin-top: 30px;
+// }
+
+// #footer .footer-top .social-links a {
+//   font-size: 18px;
+//   display: inline-block;
+//   background: #284864;
+//   color: #fff;
+//   line-height: 1;
+//   padding: 8px 0;
+//   margin-right: 4px;
+//   border-radius: 50%;
+//   text-align: center;
+//   width: 36px;
+//   height: 36px;
+//   transition: 0.3s;
+// }
+
+// #footer .footer-top .social-links a:hover {
+//   background: #fcb102;
+//   color: #fff;
+//   text-decoration: none;
+// }
+
+// #footer .footer-bottom {
+//   z-index: 2;
+//   position: relative;
+//   padding-top: 20px;
+//   padding-bottom: 20px;
+//   text-align: center;
+// }
+
+// #footer .copyright {
+//   text-align: center;
+
+// }
+
+// #footer .credits {
+//   float: right;
+//   text-align: center;
+//   font-size: 13px;
+// }
+
+// @media (max-width: 768px) {
+//   #footer .copyright, #footer .credits {
+//     padding: 5px;
+//     float: none;
+//     text-align: ceneter;
+//   }
+  
+// }
+
+
+
+.footer {
+  background: #c92223;
+  width: 100%;
+    padding: 0;
+    float: left;
+}
+.mt-30 {
+  margin-top: 30px;
+}
+.item_f1 {
+  padding-top: 50px;
+}
+.item_f1 a {
+  font-size: 14px;
+  font-weight: 400;
+  font-family: 'Roboto', sans-serif;
+  display: block;
+  padding-bottom: 10px;
+  color: #fefafa !important;
+  text-decoration: none;
+}
+.footer_bottm {
+  // margin-top: 50px;
+  padding: 20px 0;
+  // border-top: 1px solid #454545;
+}
+.edu_social_links {
+  text-align: right;
+}
+.edu_social_links a {
+  padding-top: 10px;
+  padding-left: 15px;
+  font-size: 16px;
+  display: inline-block;
+  color: #fefafa;
+  -webkit-transition: all 0.3s ease-in-out;
+  -moz-transition: all 0.3s ease-in-out;
+  -ms-transition: all 0.3s ease-in-out;
+  -o-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.fotb_left li {
+  display: inline-block;
+  vertical-align: middle;
+}
+.footer_logo img {
+  width: 50px;
+  margin-right: 8px;
+}
+img {
+  border-style: none;
+  vertical-align: middle;
+}
+p:last-child {
+  margin-bottom: 0;
+}
+p{
+  color: #fefafa;
+}
+ul{
+  margin: 0;
+  padding: 0;
+}
+@media (min-width: 320px)  and (max-width:767px){
+  .edu_social_links{text-align: center;}
+  .fotb_left{text-align: center;}
+}

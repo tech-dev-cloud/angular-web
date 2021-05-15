@@ -1,0 +1,128 @@
+.listing-cont{position: relative;padding: 5px;display: flex;flex-wrap: wrap;}
+.courses-list
+{
+  // margin: 100px 0px;
+  margin-bottom: 40px;
+}
+.courses-list  img
+{
+  width: 100%;
+}
+.courses-list .grid-course
+{
+  background-color: #fff;
+    border-radius: 10px;
+    padding: 0;
+    max-width: 23%;
+    margin-left: 24px;
+    cursor: pointer;
+}
+.courses-list .grid-course:hover
+{
+  box-shadow: 0px 2px 4px 1px #a5a0a0;
+  transition: all ease-in-out 0.3s;
+}
+.courses-list .col-md-12
+{
+  display: flex;
+}
+.courses-list .grid-course .inner-content
+{
+  padding: 10px;
+}
+.courses-list .grid-course .inner-content h3
+{
+  margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+.courses-list .grid-course .inner-content span
+{
+    display: block;
+    color: #333333;
+    padding-bottom: 5px;
+    font-size: 16px;
+}
+.courses-list .grid-course .stars 
+{
+  // text-align: center;
+  color: #c92223;
+}
+.rate{font-weight: bold;}
+.courses-list .grid-course .stars span
+{
+  padding-right: 5px;
+  font-size: 14px;
+}
+.courses-list .grid-course .stars img
+{
+width: 15px;
+}
+.courses-list .grid-course button
+{
+  background-color: #c92223;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    margin: 10px;
+    width: 92%;
+    padding: 7px;
+    margin-top: 0px;
+}
+.courses-list .grid-course button img
+{
+  width: 16px;
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.product-box-cont{width: 50%;padding: 5px;}
+@media (min-width: 1200px){
+  .product-box-cont{width: 25%;}
+}
+// .filler_box_inner {
+//   // width: 13em;
+//   border-radius: .32em;
+//   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.16);
+//   background-color: #fff;
+//   // margin: .7em;
+//   float: left;
+//   flex: 1;
+//   margin-left: 1.7em;
+//   // height: 26em;
+// }
+// @media (min-width: 320px)  and (max-width:767px){
+//     .courses-list .grid-course{max-width: 100%;margin: 0;margin-bottom: 20px !important;}
+// }
+
+
+
+
+// // Gradiant placeholder
+// .placeholder {
+//   margin: 0 auto;
+//   max-width: 200px;
+//   min-height: 100px;
+//   background-color: #eee;
+//  }
+ 
+//  @keyframes placeHolderShimmer{
+//      0%{
+//          background-position: -468px 0
+//      }
+//      100%{
+//          background-position: 468px 0
+//      }
+//  }
+ 
+//  .animated-background {
+//      animation-duration: 1.25s;
+//      animation-fill-mode: forwards;
+//      animation-iteration-count: infinite;
+//      animation-name: placeHolderShimmer;
+//      animation-timing-function: linear;
+//      background: darkgray;
+//      background: linear-gradient(to right, #eeeeee 10%, #dddddd 18%, #eeeeee 33%);
+//      background-size: 800px 104px;
+//      height: 100px;
+//      position: relative;
+//  }

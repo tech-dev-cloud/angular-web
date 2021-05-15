@@ -1,0 +1,31 @@
+<div class="container">
+    <div class="user">
+        <div id="signup" class="active">
+            <ng-container *ngIf="!success; else msg">
+                <h3>Reset your password</h3>
+                <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                    <input type="password" placeholder="New Password" formControlName="password" />
+                    <div class="error" *ngIf="isSubmit && controls.password.errors">
+                        <span *ngIf="controls.password.errors.required">{{errors.REQUIRED}}</span>
+                    </div>
+                    <br />
+                    <input type="password" placeholder="Confirm Password" formControlName="confirmPassword" />
+                    <div class="error" *ngIf="err || (isSubmit && controls.confirmPassword.errors)">
+                        <span *ngIf="controls.confirmPassword.hasError('required')">{{errors.REQUIRED}}</span>
+                        <span *ngIf="controls.confirmPassword.hasError('mustMatch')">Password should be match</span>
+                    </div>
+                    <div class="buttonbox">
+                    <button type="submit" class="btn btn-success">Save</button>                
+                    <a routerLink="" id="gotosignup" class="tab">Go to home</a>
+                    </div>
+                </form>
+            </ng-container>
+            
+            <ng-template #msg>
+                <h3>Your password has successfully changes</h3>
+                <button class="btn btn-primary" (click)="home()">Go to home</button>
+            </ng-template>
+            
+        </div>
+    </div>
+</div>

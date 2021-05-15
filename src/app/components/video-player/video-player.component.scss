@@ -1,0 +1,14 @@
+iframe{
+    width: 100%;
+}
+.modal-header{background: #ca3827; color: white;font-weight: bold; border: none;}
+.close{color: white!important;outline: none;}
+.close:hover{color: #444444;}
+.modal-body, .modal-footer{background: #444444;}
+.holds-the-iframe {
+    background:url(../../../assets/img/loader.gif) center center no-repeat;
+  }
+.preview-course-list{color: white;}
+.item{padding:10px; background: black; border-bottom: 1px solid gray; }
+.icon{float: left; margin-right:10px;}
+.duration{float: right;}

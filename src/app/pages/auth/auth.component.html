@@ -1,0 +1,87 @@
+<!-- <div class="limiter">
+  <div class="container-login100"> -->
+<div class="modal-header">
+  <h4 class="modal-title">{{title}}</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <div class="row">
+    <div class="col-md-5">
+      <img src="assets/img/img-01.png" alt="IMG">
+    </div>
+    <form class="col-md-7" [formGroup]="form" (ngSubmit)="onSubmit()">
+      <span class="login100-form-title">
+        Member Login
+      </span>
+
+      <!-- Name -->
+      <div class="group" data-validate="Valid email is required: ex@abc.xyz" *ngIf="type==authType.SIGNUP">
+        <input class="control" type="text" placeholder="Name" formControlName="name">
+        <!-- <i class="fa fa-envelope sub-icon"></i> -->
+        <div class="error" *ngIf="isSubmit && controls.name.errors">
+          <span *ngIf="controls.name.errors.required">{{errors.REQUIRED}}</span>
+          <span *ngIf="!controls.name.errors.required && controls.name.errors.pattern">{{errors.INVALID.NAME}}</span>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div class="group  mt-3">
+        <input class="control" type="email" placeholder="Email" formControlName="email">
+        <!-- <i class="fa fa-envelope sub-icon"></i> -->
+        <div class="error" *ngIf="isSubmit && controls.email.errors">
+          <span *ngIf="controls.email.errors.required">{{errors.REQUIRED}}</span>
+          <span *ngIf="!controls.email.errors.required && controls.email.errors.email">{{errors.INVALID.EMAIL}}</span>
+        </div>
+      </div>
+
+      <!-- Phone Number -->
+      <div class="group mt-3" *ngIf="type==authType.SIGNUP">
+        <input class="control" type="text" placeholder="Phone number" formControlName="phoneNumber">
+        <div class="error" *ngIf="isSubmit && controls.phoneNumber.errors">
+          <span *ngIf="controls.phoneNumber.errors.required">{{errors.REQUIRED}}</span>
+          <span *ngIf="!controls.phoneNumber.errors.required && controls.phoneNumber.errors.pattern">{{errors.INVALID.PHONE}}</span>
+        </div>
+      </div>
+
+      <!-- Password -->
+      <div class="group mt-3" data-validate="Password is required" *ngIf="type==authType.SIGNUP || type==authType.LOGIN">
+        <input class="control" type="password" placeholder="Password" formControlName="password">
+        <!-- <i class="fa fa-lock sub-icon" aria-hidden="true"></i> -->
+        <div class="error" *ngIf="isSubmit && controls.password.errors">
+          <span *ngIf="controls.password.errors.required">{{errors.REQUIRED}}</span>
+        </div>
+      </div>
+
+      <button type="submit" class="mt-3">{{btnText}}</button>
+      <div *ngIf="type==authType.LOGIN">
+        <a class="txt2" routerLink="." (click)="initForgotForm()">
+          Forgot Password?
+        </a>
+      </div>
+      <div class="mt-1">
+        <a class="txt2" routerLink="." (click)="initSignUpForm()" *ngIf="type==authType.LOGIN">
+          Sign up
+          <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+        <a class="txt2" routerLink="." (click)="initLoginForm()" *ngIf="type==authType.SIGNUP || type==authType.FORGOT">
+          Log in
+          <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+      </div>
+      <div class="g-signin2" data-onsuccess="onSignIn"></div>
+
+      <!-- <div class="text-center p-t-136">
+        <a class="txt2" href="#">
+          Create your Account
+          <i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
+        </a>
+      </div> -->
+    </form>
+
+  </div>
+
+</div>
+<!-- </div>
+</div> -->

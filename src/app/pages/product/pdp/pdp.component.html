@@ -1,0 +1,79 @@
+<!-- ======= Hero Section ======= -->
+<app-header></app-header>
+<main id="main" class="main-course-detail">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12 section-rating">
+
+
+        <div class="col-md-8">
+          <div class="row">
+            <div class="left-img col-md-12">
+              <div class="col-md-4 minus-img"> <img src="{{product?.image[0]}}"></div>
+              <div class="col-md-8 content-right">
+                <h2>{{(product || {}).name}}</h2>
+                <h4>{{(product || {}).heading}}</h4>
+                <p *ngIf="(product || {}  ).type=='2'">Attempt {{product.product_meta.totalQuestions}} questions in
+                  {{product.product_meta.time_limit}} minutes </p>
+                <div>Created by {{product.mentorInfo.name}}</div>
+                <div style="color: red;" *ngIf="product.validity">Test will be active till {{product.validity}} months
+                  after enrollment.</div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+        <div class="col-md-1"><span><img src="assets/img/quiz-detail-inner/seprator.png"></span></div>
+        <div class="col-md-3 right-star">
+          <span>
+            <button class="enroll-btn" (click)="enroll()">
+              <i><img src="assets/img/quiz-list/enroll-icon.png" /></i>
+
+              <ng-container *ngIf="product?.isPaid; else free">
+                Buy now at <b> <i class="fa fa-inr"></i> {{product.price}}</b>
+              </ng-container>
+              <ng-template #free>
+                Get it
+              </ng-template>
+
+            </button>
+          </span>
+
+        </div>
+
+      </div>
+    </div>
+
+
+
+    <div class="row">
+      <div class="col-md-12 mt-4" *ngIf="product.type=='3'">
+        <h2 style="color: whitesmoke;">What's in package?</h2>
+        <!-- <app-list [products]="product.sub_products" [nameOnly]="true" (onProductSelect)="onProductSelect($event)"> -->
+        <!-- </app-list> -->
+      </div>
+      <div class="col-md-12 list-detail">
+        <div class="col-md-6 bg-white left-section">
+          <h2>Benefits</h2>
+        </div>
+
+        <!-- <div class="col-md-6 bg-red benifits"> -->
+        <div class="col-md-6 bg-red">
+
+          <ul>
+            <li *ngFor="let item of product?.benefits"><img
+                src="assets/img/quiz-detail-inner/tick.png"><span>{{item}}</span></li>
+          </ul>
+        </div>
+
+      </div>
+      <div class="col-md-12 widget" *ngIf="product.description">
+        <h2 class="widget-title">Description</h2>
+        <p [innerHTML]="product.description"></p>
+      </div>
+    </div>
+
+  </div>
+
+</main>
+<app-footer></app-footer>

@@ -1,0 +1,52 @@
+<div class="modal-header">
+  <h4 class="modal-title">Give rating for this course</h4>
+  <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<div class="modal-body">
+  <form style="text-align: center;">
+    <div class="form-group rating">
+      <label>
+        <input type="radio" name="rating" [(ngModel)]="rating" value="1" />
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" [(ngModel)]="rating" value="2" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" [(ngModel)]="rating" value="3" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" [(ngModel)]="rating" value="4" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+      <label>
+        <input type="radio" name="rating" [(ngModel)]="rating" value="5" />
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+        <span class="icon">★</span>
+      </label>
+    </div>
+    <div class="form-group" *ngIf="rating">
+      <textarea name="review" cols="30" rows="3" [(ngModel)]="review" class="form-control"
+        placeholder="Share you review"></textarea>
+    </div>
+  </form>
+</div>
+<div class="modal-footer">
+  <div class="form-group">
+    <button class="btn btn-success" (click)="submitRating()">Submit</button>
+    <button class="btn btn-default" (click)="closeModal()">Cancel</button>
+  </div>
+</div>

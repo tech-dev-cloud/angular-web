@@ -1,0 +1,152 @@
+<app-header [ratingItem]="!product?.userReview" (ratingEvent)="giveRating()"></app-header>
+<main id="main" class="main-insruction">
+
+  <div class="heading-bg">
+
+    <div class="container">
+
+      <div class="profile-pic">
+        <span class="profile-img"><img src="assets/img/profile.jpg"></span>
+        <span class="right-detail">
+          <ul>
+            <li><span>Candidate Name</span><span>:{{userName}}</span></li>
+            <li><span>Exam Name</span><span>:UGC NET</span></li>
+            <!-- <li><span>Subject Name</span><span>:{{(subject || {}).name}}</span></li> -->
+            <li *ngIf="quiz"><span>Remaining Time</span><span>:{{getRemainingTime}}
+                <i [ngClass]="{'fa quiz-status': true, 'fa-pause':(quizProgress || {}).status=='in_progress', 'fa-play':(quizProgress || {}).status=='on_hold'}"
+                  (click)="pausePlay()" title="Pause"></i> </span></li>
+          </ul>
+
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="container">
+    <div class="row quiz-content">
+      <div class="col-md-7">
+        <div class="quiz-scroll">
+          <h3 class="q-heading">QUESTION {{currentIndex+1}}</h3>
+          <p class="q-title" [innerHTML]="(currentQuestion || {}).question"></p>
+
+          <h5 class="q-opt">Options:</h5>
+
+          <ul class="question-ul">
+            <ng-container *ngFor="let option of (currentQuestion || {}).options; let i=index">
+              <li [ngClass]="{'correct': result && isCorrect(i)=='correct','wrong': result && isCorrect(i)=='wrong'}">
+                {{i+1}}. {{option}}</li>
+
+            </ng-container>
+
+          </ul>
+
+          <ul class="answer-ul" *ngIf="!result && !timesUp">
+            <ng-container *ngFor="let option of (currentQuestion || {}).options; let i=index">
+              <li>
+                <span>
+                  <label class="radio-container">{{i+1+""}})
+                    <input type="radio" [(ngModel)]="selectedOption" name="radioradio" value="{{i+1+''}}">
+                    <span class="radio-checkmark"></span>
+                  </label>
+                </span>
+              </li>
+            </ng-container>
+          </ul>
+        </div>
+        <ng-container *ngIf="result && currentQuestion.description">
+          <div style="color: white;">
+            <h3>Description</h3>
+            <p [innerHTML]="currentQuestion.description"></p>
+          </div>
+        </ng-container>
+
+        <div class="answer-btn" *ngIf="!result && !timesUp">
+          <button class="bg-gl" (click)="saveAnswer(answerAction.ANSWERED)">SAVE & NEXT</button>
+          <!-- <button class="bg-sl">CLEAR</button> -->
+          <button class="bg-ol" (click)="saveAnswer(answerAction.SAVE_MARK_FOR_REVIEW)">SAVE & MARK FOR REVIEW</button>
+          <button class="bg-bl" (click)="saveAnswer(answerAction.MARK_FOR_REVIEW)">MARK REVIEW & NEXT</button>
+        </div>
+
+        <div class="b-p-btn">
+          <span><button [ngClass]="{'back': currentIndex==0,'prev':currentIndex>0 }" class="back"
+              (click)="prevQuestion()"><i class="fa fa-angle-left"></i>BACK</button></span>
+          <span><button
+              [ngClass]="{'back': currentIndex==(questions || []).length-1,'prev':currentIndex<(questions || []).length-1 }"
+              class="prev" (click)="nextQuestion()">NEXT <i class="fa fa-angle-right"></i></button></span>
+          <span><button class="submit" (click)="submitQuiz()" *ngIf="!result && !timesUp">SUBMIT</button></span>
+        </div>
+
+      </div>
+
+      <div class="col-md-5">
+        <div class="row right-sidebar">
+          <div class="col-md-6">
+
+            <ng-container *ngIf="!result; else notattempt">
+              <span class="not-visit">{{counts.notVisited}}</span>
+              <span class="sp-title">NOT VISITED</span>
+            </ng-container>
+            <ng-template #notattempt>
+              <span class="not-visit">{{result.notAnswered}}</span>
+              <span class="sp-title">NOT ANSWERED</span>
+            </ng-template>
+
+          </div>
+          <div class="col-md-6">
+            <ng-container *ngIf="!result; else wrong">
+              <span class="not-ans">{{counts.notAnswered}}</span>
+              <span class="sp-title">NOT ANSWERED</span>
+            </ng-container>
+            <ng-template #wrong>
+              <span class="not-ans">{{result.incorrect}}</span>
+              <span class="sp-title">WRONG ANSWERED</span>
+            </ng-template>
+          </div>
+
+          <div class="col-md-6">
+            <ng-container *ngIf="!result; else correct">
+              <span class="ans">{{counts.answered}}</span>
+              <span class="sp-title">ANSWERED</span>
+            </ng-container>
+            <ng-template #correct>
+              <span class="ans">{{result.correct}}</span>
+              <span class="sp-title">CORRECT ANSWERES</span>
+            </ng-template>
+
+          </div>
+
+          <div class="col-md-6" *ngIf="result" style="color:white">
+            <h5>Total Score: {{result.finalScore}} / {{result.totalScore}}</h5>
+          </div>
+
+          <div class="col-md-6" *ngIf="!result">
+            <span class="review">{{counts.markForReview}}</span>
+            <span class="sp-title">MARKED FOR REVIEW</span>
+          </div>
+
+          <div class="col-md-12" *ngIf="!result">
+            <span class="ans-mark">{{counts.answerReview}}</span>
+            <span class="sp-title">ANSWERED & MARKED FOR REVIEW </span>
+          </div>
+
+        </div>
+
+        <div class="row counting-panel">
+          <ul>
+            <ng-container *ngFor="let question of questions; let i=index;">
+              <li *ngIf="!result" class="{{question.attemptStatus | questionStatus}}"
+                (click)="onQuestionChange(question,i)">{{i+1}}</li>
+              <li *ngIf="result" [class]="getResultClass(question)" (click)="onQuestionChange(question,i)">{{i+1}}</li>
+            </ng-container>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</main>
+<app-footer></app-footer>

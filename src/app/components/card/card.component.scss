@@ -17,10 +17,19 @@ $base-color-dark:#272626;
         min-height: 85px;
         background-size: cover;
         background-repeat: no-repeat;
+        img {
+          min-width: 300px;
+          max-width: 300px;
+          min-height: 200px;
+          max-height: 200px;
+        }
       }
       .product-info{
         margin-top: 8px;
         padding: 0 3px 5px;
+        min-height: 150px;
+        max-height: 150px;
+
         .rating-box{
           line-height: 20px;
           height: 20px;
@@ -206,6 +215,8 @@ $base-color-dark:#272626;
   justify-content: space-between;
   display: flex;
   // margin-top: .3em;
+  position: absolute;
+  bottom: 2%;
   }
   .filler-price {
   opacity: 0.87;
